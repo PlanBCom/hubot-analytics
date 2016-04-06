@@ -1,5 +1,8 @@
 # hubot-analytics
 
+[![Build Status](https://circleci.com/gh/PlanBCom/hubot-analytics/tree/master.svg?style=shield)](https://circleci.com/gh/PlanBCom/hubot-analytics)
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/f59fb080459140a497bd17f357147e2d)](https://www.codacy.com/app/godoy-ccp/hubot-analytics)
+
 A hubot script to get google analytics reports
 
 See [`src/analytics.coffee`](src/analytics.coffee) for full documentation.
