@@ -5,7 +5,7 @@
 
 A hubot script to get google analytics reports
 
-See [`src/analytics.coffee`](src/analytics.coffee) for full documentation.
+See [`src/analytics.js`](src/analytics.js) for full documentation.
 
 ## Installation
 
@@ -24,6 +24,9 @@ Then add **hubot-analytics** to your `external-scripts.json`:
 ## Sample Interaction
 
 ```
-user1>> hubot hello
-hubot>> hello!
+User>> SpikeBot analytics profiles
+SpikeBot>> @User:
+114783908 - Project X
+123511123 - Site Plan B
+128210353 - Hubot Chat
 ```
