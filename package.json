@@ -1,7 +1,7 @@
 {
   "name": "hubot-analytics",
   "description": "A hubot script to get google analytics reports",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "Plan B Comunicação <dev@planb.com.br>",
   "license": "MIT",
   "keywords": "hubot, hubot-scripts, google analytics, ga",
@@ -12,7 +12,9 @@
   "bugs": {
     "url": "https://github.com/PlanBCom/hubot-analytics/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "googleapis": "^4.0.0"
+  },
   "peerDependencies": {
     "hubot": "2.x"
   },
