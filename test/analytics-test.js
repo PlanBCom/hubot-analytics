@@ -8,13 +8,13 @@ chai.use(require("sinon-chai"));
 
 expect = chai.expect;
 
-describe('analytics', function() {
+describe("analytics", function() {
   beforeEach(function() {
     this.robot = {
       respond: sinon.spy(),
       hear: sinon.spy()
     };
-    return require('../src/analytics')(this.robot);
+    return require("../src/analytics")(this.robot);
   });
   it("registers a respond listener", function() {
     return expect(this.robot.respond).to.have.been.calledWith(/hello/);

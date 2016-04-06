@@ -18,7 +18,7 @@ var google = require("googleapis");
 var analytics = google.analytics("v3");
 
 var GOOGLE_API_CLIENT_EMAIL = process.env.GOOGLE_API_CLIENT_EMAIL;
-var GOOGLE_API_PRIVATE_KEY = process.env.GOOGLE_API_PRIVATE_KEY.replace(/\\n/g, '\n');
+var GOOGLE_API_PRIVATE_KEY = process.env.GOOGLE_API_PRIVATE_KEY.replace(/\\n/g, "\n");
 
 var oauth2Client = new google.auth.JWT(GOOGLE_API_CLIENT_EMAIL, null, GOOGLE_API_PRIVATE_KEY, ["https://www.googleapis.com/auth/analytics.readonly"], null);
 
@@ -39,7 +39,6 @@ module.exports = function(robot) {
         },
         function(err, entries) {
           if (err) {
-            console.log(err);
             return res.reply(err);
           }
 
