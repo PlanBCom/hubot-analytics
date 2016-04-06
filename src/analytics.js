@@ -14,8 +14,8 @@
 // Author:
 //   Plan B Comunicação <dev@planb.com.br>
 
-var google = require('googleapis');
-var analytics = google.analytics('v3');
+var google = require("googleapis");
+var analytics = google.analytics("v3");
 
 var GOOGLE_API_CLIENT_EMAIL = process.env.GOOGLE_API_CLIENT_EMAIL;
 var GOOGLE_API_PRIVATE_KEY = process.env.GOOGLE_API_PRIVATE_KEY.replace(/\\n/g, '\n');
@@ -26,17 +26,16 @@ module.exports = function(robot) {
 
   robot.hear(/analytics profiles/, function(res) {
 
-    oauth2Client.authorize(function(err, tokens) {
+    oauth2Client.authorize(function(err) {
       if (err) {
-        console.log(err);
         return res.reply(err);
       }
 
       analytics.management.profiles.list(
         {
           auth: oauth2Client,
-          accountId: '~all',
-          webPropertyId: '~all'
+          accountId: "~all",
+          webPropertyId: "~all"
         },
         function(err, entries) {
           if (err) {

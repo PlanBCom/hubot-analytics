@@ -1,10 +1,10 @@
 var chai, expect, sinon;
 
-chai = require('chai');
+chai = require("chai");
 
-sinon = require('sinon');
+sinon = require("sinon");
 
-chai.use(require('sinon-chai'));
+chai.use(require("sinon-chai"));
 
 expect = chai.expect;
 
@@ -16,10 +16,10 @@ describe('analytics', function() {
     };
     return require('../src/analytics')(this.robot);
   });
-  it('registers a respond listener', function() {
+  it("registers a respond listener", function() {
     return expect(this.robot.respond).to.have.been.calledWith(/hello/);
   });
-  return it('registers a hear listener', function() {
+  return it("registers a hear listener", function() {
     return expect(this.robot.hear).to.have.been.calledWith(/orly/);
   });
 });
