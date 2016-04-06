@@ -12,7 +12,9 @@
   "bugs": {
     "url": "https://github.com/PlanBCom/hubot-analytics/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "googleapis": "^4.0.0"
+  },
   "peerDependencies": {
     "hubot": "2.x"
   },
