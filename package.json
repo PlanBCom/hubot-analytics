@@ -1,28 +1,21 @@
 {
   "name": "hubot-analytics",
   "description": "A hubot script to get google analytics reports",
-  "version": "0.0.0",
-  "author": "Adriano Godoy <godoy.ccp@gmail.com>",
+  "version": "0.0.1",
+  "author": "Plan B Comunicação <dev@planb.com.br>",
   "license": "MIT",
-
   "keywords": "hubot, hubot-scripts, google analytics, ga",
-
   "repository": {
     "type": "git",
-    "url": "git://github.com/hubot-scripts/hubot-analytics.git"
+    "url": "git@github.com:PlanBCom/hubot-analytics.git"
   },
-
   "bugs": {
-    "url": "https://github.com/hubot-scripts/hubot-analytics/issues"
+    "url": "https://github.com/PlanBCom/hubot-analytics/issues"
   },
-
-  "dependencies": {
-  },
-
+  "dependencies": {},
   "peerDependencies": {
     "hubot": "2.x"
   },
-
   "devDependencies": {
     "chai": "^2.1.1",
     "coffee-script": "1.6.3",
@@ -37,9 +30,7 @@
     "sinon": "^1.13.0",
     "sinon-chai": "^2.7.0"
   },
-
   "main": "index.coffee",
-
   "scripts": {
     "test": "grunt test"
   }
