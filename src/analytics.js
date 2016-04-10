@@ -6,7 +6,8 @@
 //   GOOGLE_API_PRIVATE_KEY
 //
 // Commands:
-//   hubot analytics profiles - <what the respond trigger does>
+//   hubot analytics profiles - Shows profiles to which the bot has access
+//   hubot pageviews 123123123 - Shows pageviews and visits of website with id 123123123
 //
 // Notes:
 //   <optional notes required for the script>

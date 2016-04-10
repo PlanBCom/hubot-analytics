@@ -23,10 +23,17 @@ Then add **hubot-analytics** to your `external-scripts.json`:
 
 ## Sample Interaction
 
+### Shows profiles to which the bot has access
 ```
 User>> SpikeBot analytics profiles
 SpikeBot>> @User:
 114783908 - Project X
 123511123 - Site Plan B
 128210353 - Hubot Chat
+```
+
+### Shows pageviews and visits of website with id 123123123
+```
+User>> SpikeBot pageviews 123123123
+SpikeBot>> @User: SiteName: 6346 visits and 12317 pageviews.
 ```
