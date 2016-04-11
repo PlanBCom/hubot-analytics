@@ -16,10 +16,10 @@
 //   Plan B Comunicação <dev@planb.com.br>
 
 var google = require("googleapis");
-require('date-utils');
+require("date-utils");
 
 var analytics = google.analytics("v3");
-var global_error;
+var globalError;
 
 module.exports = function(robot) {
 
@@ -29,13 +29,13 @@ module.exports = function(robot) {
 
     var oauth2Client = new google.auth.JWT(GOOGLE_API_CLIENT_EMAIL, null, GOOGLE_API_PRIVATE_KEY, ["https://www.googleapis.com/auth/analytics.readonly"], null);
   } catch(err) {
-    global_error = "Error on load - check your environments variables GOOGLE_API_CLIENT_EMAIL and GOOGLE_API_PRIVATE_KEY.";
+    globalError = "Error on load - check your environments variables GOOGLE_API_CLIENT_EMAIL and GOOGLE_API_PRIVATE_KEY.";
   }
 
   robot.hear(/analytics profiles/, function(res)
   {
-    if(global_error) {
-      return res.reply(global_error)
+    if(globalError) {
+      return res.reply(globalError);
     }
     oauth2Client.authorize(function(err)
     {
@@ -68,8 +68,8 @@ module.exports = function(robot) {
     var startDate = today.removeDays(30).toYMD("-");
     var endDate = today.toYMD("-");
 
-    if(global_error) {
-      return res.reply(global_error)
+    if(globalError) {
+      return res.reply(globalError)
     }
     oauth2Client.authorize(function(err)
     {
