@@ -34,6 +34,6 @@ SpikeBot>> @User:
 
 ### Shows pageviews and visits of website with id 123123123
 ```
-User>> SpikeBot pageviews 123123123
+User>> SpikeBot analytics pageviews 123123123
 SpikeBot>> @User: SiteName: 6346 visits and 12317 pageviews.
 ```

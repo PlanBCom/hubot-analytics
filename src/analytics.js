@@ -61,7 +61,7 @@ module.exports = function(robot) {
   });
 
 
-  robot.hear(/pageviews\s+(\d+)/i, function(res)
+  robot.hear(/analytics pageviews\s+(\d+)/i, function(res)
   {
     var siteId = res.match[1];
     var today = Date.today();
