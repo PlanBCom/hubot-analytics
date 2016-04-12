@@ -69,7 +69,7 @@ module.exports = function(robot) {
     var endDate = today.toYMD("-");
 
     if(globalError) {
-      return res.reply(globalError)
+      return res.reply(globalError);
     }
     oauth2Client.authorize(function(err)
     {
@@ -90,6 +90,44 @@ module.exports = function(robot) {
         var profileName = entries.profileInfo.profileName;
 
         return res.reply(profileName+": "+visits+" visits and "+pageviews+" pageviews.");
+      });
+    });
+  });
+
+
+  robot.hear(/analytics devices?\s+(\d+)/i, function(res)
+  {
+    var siteId = res.match[1];
+    var today = Date.today();
+    var startDate = today.removeDays(30).toYMD("-");
+    var endDate = today.toYMD("-");
+
+    if(globalError) {
+      return res.reply(globalError);
+    }
+    oauth2Client.authorize(function(err)
+    {
+      analytics.data.ga.get({
+        auth: oauth2Client,
+        "ids": "ga:"+siteId,
+        "start-date": startDate,
+        "end-date": endDate,
+        "metrics": "ga:sessions",
+        "dimensions": "ga:deviceCategory"
+      },
+      function(err, entries) {
+        if (err) {
+          console.log(err);
+          return res.reply(err);
+        }
+
+        var total = parseInt(entries.totalsForAllResults['ga:sessions'])
+        var result = entries.rows.map(function(item) {
+          var percentage = (parseInt(item[1]) / total) * 100;
+          return item[0] + " - " + item[1] + " sessions (" + (percentage.toFixed(2)) + "%)";
+        }).join("\n");
+
+        return res.reply(result);
       });
     });
   });
