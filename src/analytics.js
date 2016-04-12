@@ -7,7 +7,8 @@
 //
 // Commands:
 //   hubot analytics profiles - Shows profiles to which the bot has access
-//   hubot pageviews 123123123 - Shows pageviews and visits of website with id 123123123
+//   hubot analytics pageviews 123123123 - Shows pageviews and visits of website with id 123123123
+//   hubot analytics devices 123456 - Get percentage mobile x desktop access of website with id 123456
 //
 // Notes:
 //   <optional notes required for the script>
