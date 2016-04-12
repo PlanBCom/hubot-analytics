@@ -25,8 +25,8 @@ Then add **hubot-analytics** to your `external-scripts.json`:
 
 ### Shows profiles to which the bot has access
 ```
-User>> SpikeBot analytics profiles
-SpikeBot>> @User:
+User> analytics profiles
+SpikeBot> @User:
 114783908 - Project X
 123511123 - Site Plan B
 128210353 - Hubot Chat
@@ -34,6 +34,14 @@ SpikeBot>> @User:
 
 ### Shows pageviews and visits of website with id 123123123
 ```
-User>> SpikeBot analytics pageviews 123123123
-SpikeBot>> @User: SiteName: 6346 visits and 12317 pageviews.
+User> analytics pageviews 123123123
+SpikeBot> @User: SiteName: 6346 visits and 12317 pageviews.
+```
+
+### Get percentage mobile x desktop access of website with id 123456
+```
+User> analytics devices 123456
+SpikeBot> @User: desktop - 1450 sessions (21.75%)
+mobile - 4903 sessions (73.54%)
+tablet - 314 sessions (4.71%)
 ```
