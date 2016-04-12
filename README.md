@@ -21,6 +21,16 @@ Then add **hubot-analytics** to your `external-scripts.json`:
 ]
 ```
 
+### Configuration
+
+1- Create a [`https://console.developers.google.com/project`](google project)
+2- Enable "Analytics API" in your project (https://console.developers.google.com/apis/)
+3- Create a service account https://console.developers.google.com/permissions/serviceaccounts and download JSON with private key
+4- Configure the followings environments variables in your hubot server:
+a) GOOGLE_API_PRIVATE_KEY - look for 'private_key' in JSON
+b) GOOGLE_API_CLIENT_EMAIL - look for 'client_email' in JSON
+
+
 ## Sample Interaction
 
 ### Shows profiles to which the bot has access
