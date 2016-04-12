@@ -6,9 +6,10 @@
 //   GOOGLE_API_PRIVATE_KEY
 //
 // Commands:
-//   hubot analytics profiles - Shows profiles to which the bot has access
-//   hubot analytics pageviews 123123123 - Shows pageviews and visits of website with id 123123123
-//   hubot analytics devices 123456 - Get percentage mobile x desktop access of website with id 123456
+//   analytics profiles - Shows profiles to which the bot has access
+//   analytics pageviews 123123123 - Shows pageviews and visits of website with id 123123123
+//   analytics devices 123456 - Get percentage mobile x desktop access of website with id 123456
+//   analytics email - Get email account api configured to give access to others analytics profiles.
 //
 // Notes:
 //   <optional notes required for the script>
@@ -131,6 +132,11 @@ module.exports = function(robot) {
         return res.reply(result);
       });
     });
+  });
+
+  robot.hear(/analytics email/i, function(res)
+  {
+    return res.send(GOOGLE_API_CLIENT_EMAIL||"Blank - you must config your environment variables.");
   });
 
 };
