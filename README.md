@@ -57,3 +57,11 @@ SpikeBot> @User: desktop - 1450 sessions (21.75%)
 mobile - 4903 sessions (73.54%)
 tablet - 314 sessions (4.71%)
 ```
+
+### Get browsers percentage access with id 654321
+```
+User> analytics browser 654321
+SpikeBot> @User: Chrome - 3885 sessions (75.68%)
+Firefox - 290 sessions (21%)
+Internet Explorer - 115 sessions (3.32%)
+```
