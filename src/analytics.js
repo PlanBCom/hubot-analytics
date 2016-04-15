@@ -9,6 +9,7 @@
 //   analytics profiles - Shows profiles to which the bot has access
 //   analytics pageviews 123123123 - Shows pageviews and visits of website with id 123123123
 //   analytics devices 123456 - Get percentage mobile x desktop access of website with id 123456
+//   analytics browsers 654321 - Get browsers percentage access with id 654321
 //   analytics email - Get email account api configured to give access to others analytics profiles.
 //
 // Notes:
