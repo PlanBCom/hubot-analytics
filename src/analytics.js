@@ -134,6 +134,45 @@ module.exports = function(robot) {
     });
   });
 
+  robot.hear(/analytics browsers?\s+(\d+)/i, function(res)
+  {
+    var siteId = res.match[1];
+    var today = Date.today();
+    var startDate = today.removeDays(30).toYMD("-");
+    var endDate = today.toYMD("-");
+
+    if(globalError) {
+      return res.reply(globalError);
+    }
+    oauth2Client.authorize(function(err)
+    {
+      analytics.data.ga.get({
+        auth: oauth2Client,
+        "ids": "ga:"+siteId,
+        "start-date": startDate,
+        "end-date": endDate,
+        "metrics": "ga:sessions",
+        "dimensions": "ga:browser",
+        "sort": "-ga:sessions"
+      },
+      function(err, entries) {
+        if (err) {
+          console.log(err);
+          return res.reply(err);
+        }
+
+        // console.log(entries);
+        var total = parseInt(entries.totalsForAllResults['ga:sessions'])
+        var result = entries.rows.map(function(item) {
+          var percentage = (parseInt(item[1]) / total) * 100;
+          return item[0] + " - " + item[1] + " sessions (" + (percentage.toFixed(2)) + "%)";
+        }).join("\n");
+
+        return res.reply(result);
+      });
+    });
+  });
+
   robot.hear(/analytics email/i, function(res)
   {
     return res.send(GOOGLE_API_CLIENT_EMAIL||"Blank - you must config your environment variables.");
