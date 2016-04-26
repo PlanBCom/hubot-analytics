@@ -10,7 +10,7 @@
 //   analytics pageviews 123123123 - Shows pageviews and visits of website with id 123123123
 //   analytics devices 123456 - Get percentage mobile x desktop access of website with id 123456
 //   analytics browsers 654321 - Get browsers percentage access with id 654321
-//   analytics email - Get email account api configured to give access to others analytics profiles.
+//   analytics show email - Get email account api configured to give access to others analytics profiles.
 //
 // Notes:
 //   <optional notes required for the script>
@@ -174,7 +174,7 @@ module.exports = function(robot) {
     });
   });
 
-  robot.hear(/analytics email/i, function(res)
+  robot.hear(/analytics show email/i, function(res)
   {
     return res.send(GOOGLE_API_CLIENT_EMAIL||"Blank - you must config your environment variables.");
   });
