@@ -38,7 +38,7 @@ module.exports = function(robot) {
 
   robot.hear(/analytics help/i, function(res)
   {
-    helpTxt = "\nanalytics help - Returns a list of commands for this plugin\n" +
+    var helpTxt = "\nanalytics help - Returns a list of commands for this plugin\n" +
     "analytics profiles - Shows profiles to which the bot has access\n" +
     "analytics pageviews 123123 - Shows pageviews and visits of website with id 123123\n" +
     "analytics devices 123123 - Get percentage mobile x desktop access of website with id 123123\n" +
@@ -137,7 +137,7 @@ module.exports = function(robot) {
           return res.reply(err);
         }
 
-        var total = parseInt(entries.totalsForAllResults['ga:sessions'])
+        var total = parseInt(entries.totalsForAllResults["ga:sessions"])
         var result = entries.rows.map(function(item) {
           var percentage = (parseInt(item[1]) / total) * 100;
           return item[0] + " - " + item[1] + " sessions (" + (percentage.toFixed(2)) + "%)";
