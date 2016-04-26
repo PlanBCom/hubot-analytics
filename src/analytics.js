@@ -6,10 +6,11 @@
 //   GOOGLE_API_PRIVATE_KEY
 //
 // Commands:
+//   analytics help - Returns a list of commands for this plugin
 //   analytics profiles - Shows profiles to which the bot has access
-//   analytics pageviews 123123123 - Shows pageviews and visits of website with id 123123123
-//   analytics devices 123456 - Get percentage mobile x desktop access of website with id 123456
-//   analytics browsers 654321 - Get browsers percentage access with id 654321
+//   analytics pageviews 123123 - Shows pageviews and visits of website with id 123123
+//   analytics devices 123123 - Get percentage mobile x desktop access of website with id 123123
+//   analytics browsers 123123 - Get browsers percentage access with id 123123
 //   analytics show email - Get email account api configured to give access to others analytics profiles.
 //
 // Notes:
@@ -34,6 +35,18 @@ module.exports = function(robot) {
   } catch(err) {
     globalError = "Error on load - check your environments variables GOOGLE_API_CLIENT_EMAIL and GOOGLE_API_PRIVATE_KEY.";
   }
+
+  robot.hear(/analytics help/i, function(res)
+  {
+    helpTxt = "\nanalytics help - Returns a list of commands for this plugin\n" +
+    "analytics profiles - Shows profiles to which the bot has access\n" +
+    "analytics pageviews 123123 - Shows pageviews and visits of website with id 123123\n" +
+    "analytics devices 123123 - Get percentage mobile x desktop access of website with id 123123\n" +
+    "analytics browsers 123123 - Get browsers percentage access with id 123123\n" +
+    "analytics show email - Get email account api configured to give access to others analytics profiles.";
+
+    return res.send(helpTxt);
+  });
 
   robot.hear(/analytics profiles/, function(res)
   {
