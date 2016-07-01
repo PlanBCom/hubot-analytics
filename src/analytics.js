@@ -80,9 +80,8 @@ module.exports = function(robot) {
   robot.hear(/analytics pageviews\s+(\d+)/i, function(res)
   {
     var siteId = res.match[1];
-    var today = Date.today();
-    var startDate = today.removeDays(30).toYMD("-");
-    var endDate = today.toYMD("-");
+    var startDate = Date.today().removeDays(30).toYMD("-");
+    var endDate = Date.today().toYMD("-");
 
     if(globalError) {
       return res.reply(globalError);
@@ -114,9 +113,9 @@ module.exports = function(robot) {
   robot.hear(/analytics devices?\s+(\d+)/i, function(res)
   {
     var siteId = res.match[1];
-    var today = Date.today();
-    var startDate = today.removeDays(30).toYMD("-");
-    var endDate = today.toYMD("-");
+    var startDate = Date.today().removeDays(30).toYMD("-");
+    var endDate = Date.today().toYMD("-");
+    var result = "";
 
     if(globalError) {
       return res.reply(globalError);
@@ -137,11 +136,13 @@ module.exports = function(robot) {
           return res.reply(err);
         }
 
-        var total = parseInt(entries.totalsForAllResults["ga:sessions"])
-        var result = entries.rows.map(function(item) {
-          var percentage = (parseInt(item[1]) / total) * 100;
-          return item[0] + " - " + item[1] + " sessions (" + (percentage.toFixed(2)) + "%)";
-        }).join("\n");
+        var total = parseInt(entries.totalsForAllResults["ga:sessions"]);
+        if(total>0) {
+          result = entries.rows.map(function(item) {
+            var percentage = (parseInt(item[1]) / total) * 100;
+            return item[0] + " - " + item[1] + " sessions (" + (percentage.toFixed(2)) + "%)";
+          }).join("\n");
+        }
 
         return res.reply(result);
       });
@@ -151,9 +152,9 @@ module.exports = function(robot) {
   robot.hear(/analytics browsers?\s+(\d+)/i, function(res)
   {
     var siteId = res.match[1];
-    var today = Date.today();
-    var startDate = today.removeDays(30).toYMD("-");
-    var endDate = today.toYMD("-");
+    var startDate = Date.today().removeDays(30).toYMD("-");
+    var endDate = Date.today().toYMD("-");
+    var result = "";
 
     if(globalError) {
       return res.reply(globalError);
@@ -175,12 +176,13 @@ module.exports = function(robot) {
           return res.reply(err);
         }
 
-        // console.log(entries);
         var total = parseInt(entries.totalsForAllResults['ga:sessions'])
-        var result = entries.rows.map(function(item) {
-          var percentage = (parseInt(item[1]) / total) * 100;
-          return item[0] + " - " + item[1] + " sessions (" + (percentage.toFixed(2)) + "%)";
-        }).join("\n");
+        if(total>0) {
+          result = entries.rows.map(function(item) {
+            var percentage = (parseInt(item[1]) / total) * 100;
+            return item[0] + " - " + item[1] + " sessions (" + (percentage.toFixed(2)) + "%)";
+          }).join("\n");
+        }
 
         return res.reply(result);
       });
