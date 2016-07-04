@@ -22,10 +22,14 @@
 var google = require("googleapis");
 require("date-utils");
 
+var HubotAnalytics = require('./lib/HubotAnalytics.js');
+var hubotAnalytics = new HubotAnalytics();
+
 var analytics = google.analytics("v3");
 var globalError;
 
 module.exports = function(robot) {
+  hubotAnalytics.profilesNames = robot.brain.get('profilesNames');
 
   try {
     var GOOGLE_API_CLIENT_EMAIL = process.env.GOOGLE_API_CLIENT_EMAIL;
@@ -48,6 +52,7 @@ module.exports = function(robot) {
     return res.send(helpTxt);
   });
 
+
   robot.hear(/analytics profiles/, function(res)
   {
     if(globalError) {
@@ -66,9 +71,14 @@ module.exports = function(robot) {
             return res.reply(err);
           }
 
+          var mapProfilesNames = {};
           var response = entries.items.map(function(item) {
+            mapProfilesNames[item.name] = item.id; //hash by name
             return item.id + " - " + item.name;
           }).join("\n");
+
+          robot.brain.set('profilesNames', mapProfilesNames); // store in brain
+          hubotAnalytics.profilesNames = mapProfilesNames;
 
           return res.reply(response);
         }
@@ -77,9 +87,9 @@ module.exports = function(robot) {
   });
 
 
-  robot.hear(/analytics pageviews\s+(\d+)/i, function(res)
+  robot.hear(/analytics pageviews\s+("[\w .\-\[\]]+")$/i, function(res)
   {
-    var siteId = res.match[1];
+    var site = hubotAnalytics.getSiteId(res.match[1]);
     var startDate = Date.today().removeDays(30).toYMD("-");
     var endDate = Date.today().toYMD("-");
 
@@ -90,7 +100,7 @@ module.exports = function(robot) {
     {
       analytics.data.ga.get({
         auth: oauth2Client,
-        "ids": "ga:"+siteId,
+        "ids": "ga:" + site,
         "start-date": startDate,
         "end-date": endDate,
         "metrics": "ga:visits, ga:pageviews"
@@ -110,9 +120,10 @@ module.exports = function(robot) {
   });
 
 
-  robot.hear(/analytics devices?\s+(\d+)/i, function(res)
+  robot.hear(/analytics devices?\s+("[\w .\-\[\]]+")$/i, function(res)
   {
-    var siteId = res.match[1];
+    var site = hubotAnalytics.getSiteId(res.match[1]);
+
     var startDate = Date.today().removeDays(30).toYMD("-");
     var endDate = Date.today().toYMD("-");
     var result = "";
@@ -124,7 +135,7 @@ module.exports = function(robot) {
     {
       analytics.data.ga.get({
         auth: oauth2Client,
-        "ids": "ga:"+siteId,
+        "ids": "ga:" + site,
         "start-date": startDate,
         "end-date": endDate,
         "metrics": "ga:sessions",
@@ -149,9 +160,11 @@ module.exports = function(robot) {
     });
   });
 
-  robot.hear(/analytics browsers?\s+(\d+)/i, function(res)
+
+  robot.hear(/analytics browsers?\s+("[\w .\-\[\]]+")$/i, function(res)
   {
-    var siteId = res.match[1];
+    var site = hubotAnalytics.getSiteId(res.match[1]);
+
     var startDate = Date.today().removeDays(30).toYMD("-");
     var endDate = Date.today().toYMD("-");
     var result = "";
@@ -163,7 +176,7 @@ module.exports = function(robot) {
     {
       analytics.data.ga.get({
         auth: oauth2Client,
-        "ids": "ga:"+siteId,
+        "ids": "ga:"+site,
         "start-date": startDate,
         "end-date": endDate,
         "metrics": "ga:sessions",
@@ -188,6 +201,7 @@ module.exports = function(robot) {
       });
     });
   });
+
 
   robot.hear(/analytics show email/i, function(res)
   {
