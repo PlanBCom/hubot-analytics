@@ -8,9 +8,9 @@
 // Commands:
 //   analytics help - Returns a list of commands for this plugin
 //   analytics profiles - Shows profiles to which the bot has access
-//   analytics pageviews 123123 - Shows pageviews and visits of website with id 123123
-//   analytics devices 123123 - Get percentage mobile x desktop access of website with id 123123
-//   analytics browsers 123123 - Get browsers percentage access with id 123123
+//   analytics pageviews "Site Name or ID" - Shows pageviews and visits of website with "Site Name or ID"
+//   analytics devices "Site Name or ID" - Get percentage mobile x desktop access of website with "Site Name or ID"
+//   analytics browsers "Site Name or ID" - Get browsers percentage access with "Site Name or ID"
 //   analytics show email - Get email account api configured to give access to others analytics profiles.
 //
 // Notes:
@@ -44,9 +44,9 @@ module.exports = function(robot) {
   {
     var helpTxt = "\nanalytics help - Returns a list of commands for this plugin\n" +
     "analytics profiles - Shows profiles to which the bot has access\n" +
-    "analytics pageviews 123123 - Shows pageviews and visits of website with id 123123\n" +
-    "analytics devices 123123 - Get percentage mobile x desktop access of website with id 123123\n" +
-    "analytics browsers 123123 - Get browsers percentage access with id 123123\n" +
+    "analytics pageviews \"Site Name or ID\" - Shows pageviews and visits of website with \"Site Name or ID\"\n" +
+    "analytics devices \"Site Name or ID\" - Get percentage mobile x desktop access of website with \"Site Name or ID\"\n" +
+    "analytics browsers \"Site Name or ID\" - Get browsers percentage access with \"Site Name or ID\"\n" +
     "analytics show email - Get email account api configured to give access to others analytics profiles.";
 
     return res.send(helpTxt);

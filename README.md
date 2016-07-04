@@ -34,8 +34,10 @@ GOOGLE_API_CLIENT_EMAIL - look for 'client_email' in JSON
 
 
 ## Sample Interaction
+Run ```analytics help``` for full list of commands
 
-### Shows profiles to which the bot has access
+
+### Shows profiles to which the bot has access and store in hubot brain
 ```
 User> analytics profiles
 SpikeBot> @User:
@@ -44,23 +46,23 @@ SpikeBot> @User:
 128210353 - Hubot Chat
 ```
 
-### Shows pageviews and visits of website with id 123123123
+### Shows pageviews and visits of website with "Site Name or ID"
 ```
-User> analytics pageviews 123123123
+User> analytics pageviews "Site Name or ID"
 SpikeBot> @User: SiteName: 6346 visits and 12317 pageviews.
 ```
 
-### Get percentage mobile x desktop access of website with id 123456
+### Get percentage mobile x desktop access of website with "Site Name or ID"
 ```
-User> analytics devices 123456
+User> analytics devices "Site Name or ID"
 SpikeBot> @User: desktop - 1450 sessions (21.75%)
 mobile - 4903 sessions (73.54%)
 tablet - 314 sessions (4.71%)
 ```
 
-### Get browsers percentage access with id 654321
+### Get browsers percentage access with "Site Name or ID"
 ```
-User> analytics browser 654321
+User> analytics browser "Site Name or ID"
 SpikeBot> @User: Chrome - 3885 sessions (75.68%)
 Firefox - 290 sessions (21%)
 Internet Explorer - 115 sessions (3.32%)
