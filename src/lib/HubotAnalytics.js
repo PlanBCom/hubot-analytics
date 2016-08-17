@@ -1,6 +1,6 @@
 
 function HubotAnalytics() {
-  this.profilesNames = "ok";
+  this.profilesNames = "";
 }
 
 HubotAnalytics.prototype.getSiteId = function(siteMatch) {
