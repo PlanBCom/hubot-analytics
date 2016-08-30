@@ -67,3 +67,11 @@ SpikeBot> @User: Chrome - 3885 sessions (75.68%)
 Firefox - 290 sessions (21%)
 Internet Explorer - 115 sessions (3.32%)
 ```
+
+## Contributing
+
+1. Fork it (https://github.com/PlanBCom/hubot-analytics/fork).
+2. Create your feature branch (`git checkout -b my-new-feature`).
+3. Commit your changes (`git commit -am 'Add some feature'`).
+4. Push to the branch (`git push origin my-new-feature`).
+5. Create a new Pull Request.
